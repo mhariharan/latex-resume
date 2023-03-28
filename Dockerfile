@@ -1,12 +1,12 @@
-FROM ubuntu:xenial
+FROM alpine
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -q && apt-get install -qy \
+RUN apk update && apk upgrade && apk add --no-cache \
     curl jq \
     texlive-full \
-    python-pygments gnuplot \
-    make git \
-    && rm -rf /var/lib/apt/lists/*
+    py3-pygments gnuplot \
+    make git
+    
 
 WORKDIR /data
 VOLUME ["/data"]
